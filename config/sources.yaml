@@ -1,0 +1,48 @@
+# Per-source filename/ID patterns, used both to register documents and to
+# resolve citations found inside circular text back to a native_id.
+#
+# citation_regex is intentionally permissive (over-match) — relations.py
+# resolves candidates against the register and discards ones that don't
+# match a known circular, so a loose regex costs precision at resolve time,
+# not correctness.
+
+sources:
+  NSE:
+    filename_regex: 'NSE_(?P<native_id>NSE_[A-Z]+_\d+)\.pdf'
+    native_id_display: 'NSE/{dept_code}/{num}'
+    citation_regex: 'NSE/[A-Z]{2,6}/\d{3,6}'
+    cover_fields:
+      department: 'Department:\s*([A-Z &]+?)\s*(?:Download Ref No|Circular Ref)'
+      native_id: 'Download Ref No:\s*(NSE/[A-Z]+/\d+)'
+      issue_date: 'Date:\s*([A-Za-z]+ \d{1,2},\s*\d{4})'
+      official_ref: 'Circular Ref\.?\s*No:?\s*([0-9]+/\d{4})'
+
+  BSE:
+    filename_regex: 'BSE_(?P<native_id>\d{8}-\d+)\.pdf'
+    native_id_display: '{native_id}'
+    citation_regex: '\d{8}-\d{1,4}'
+    cover_fields:
+      native_id: 'Notice\s*No\.?\s*([0-9]{8}\s*-\s*[0-9]+)'
+      issue_date: 'Notice Date\s*([0-9]{1,2}\s+[A-Za-z]{3}\s+[0-9]{4})'
+      category: 'Category\s*([A-Za-z &]+?)\s*(?:Segment|Department|Subject)'
+      segment: 'Segment\s*([A-Za-z &]+?)\s*(?:Department|Subject)'
+      department: 'Department\s*([A-Za-z &]+?)\s*Subject'
+      subject: 'Subject\s*(.+?)\s*Attachments'
+
+  SEBI:
+    filename_regex: 'SEBI_(?P<native_id>.+)\.pdf'
+    citation_regex: 'SEBI/[A-Z0-9/]+/\d{4}/\d+'
+
+  MCX:
+    filename_regex: 'MCX_(?P<native_id>.+)\.pdf'
+    citation_regex: 'MCX/[A-Z]+/\d+'
+
+  CDSL:
+    filename_regex: 'CDSL_(?P<native_id>DP\d{4}-\d+)\.pdf'
+    citation_regex: 'DP\d{4}-\d+'
+
+  NSDL:
+    filename_regex: 'NSDL_(?P<native_id>.+)\.pdf'
+    citation_regex: 'NSDL/[A-Z]+/\d+'
+
+date_citation_regex: 'circular\s+dated\s+([A-Za-z]+ \d{1,2},?\s*\d{4})'

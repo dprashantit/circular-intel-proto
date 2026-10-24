@@ -1,0 +1,3 @@
+{"question": "What are the mock trading timings for the Currency Derivatives segment on October 16, 2026?", "expected_source": "NSE", "expected_native_id": "NSE/CD/76919"}
+{"question": "Which circular discusses discontinuation of the old NNF encryption mechanism with interactive port 10885?", "expected_source": "NSE", "expected_native_id": "NSE/CD/77048"}
+{"question": "When is BSE's mock trading session for the Equity segment in October 2026?", "expected_source": "BSE", "expected_native_id": "20261016-8"}

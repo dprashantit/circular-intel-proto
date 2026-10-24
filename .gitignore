@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Large / regenerable — these live on Google Drive in Colab, not in git
+data/
+db/*.sqlite
+chroma_db/
+models/
+*.gguf
+
+.env
+.DS_Store

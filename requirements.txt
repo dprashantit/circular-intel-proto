@@ -1,0 +1,8 @@
+pymupdf
+sentence-transformers
+chromadb
+rank_bm25
+llama-cpp-python
+gradio
+pyyaml
+tqdm
