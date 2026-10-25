@@ -2,7 +2,14 @@ pymupdf
 sentence-transformers
 chromadb
 rank_bm25
-llama-cpp-python
+transformers
+accelerate
 gradio
 pyyaml
 tqdm
+
+# llama-cpp-python is intentionally NOT listed here — it's installed
+# conditionally in the notebook (GPU-gated cell) because a plain
+# `pip install -r requirements.txt` would try to build it from source on
+# any Python version without a prebuilt wheel, which is slow/unreliable.
+# The CPU fallback uses the `transformers` backend instead (see src/llm.py).
